@@ -27,7 +27,7 @@ def add_measurement():
 
     quantity = float(data['quantity_kg'])
     total_energy = quantity * residue.energy_potential_kwh
-    price_per_kwh = float(data.get('price_per_kwh', 0.95))  # exemplo: R$0,95/kWh
+    price_per_kwh = float(data.get('price_per_kwh', 0.95))
     estimated_savings = total_energy * price_per_kwh
 
     new_m = Measurement(

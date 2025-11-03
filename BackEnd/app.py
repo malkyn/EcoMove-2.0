@@ -9,7 +9,7 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///C:\Users\MarcosVini\Documents\Upxbiogas.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
@@ -18,10 +18,12 @@ def create_app():
     from routes.users import users_bp
     from routes.residues import residues_bp
     from routes.measurements import measurements_bp
+    from routes.dashboard import dashboard_bp
 
     app.register_blueprint(users_bp, url_prefix='/api/users')
     app.register_blueprint(residues_bp, url_prefix='/api/residues')
     app.register_blueprint(measurements_bp, url_prefix='/api/measurements')
+    app.register_blueprint(dashboard_bp, url_prefix='/api/dashboard')
 
     with app.app_context():
         db.create_all()
